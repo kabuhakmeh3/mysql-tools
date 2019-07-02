@@ -1,4 +1,4 @@
-import os, datetime, pickle
+import os, datetime
 import pandas as pd
 from sqlalchemy import create_engine
 from connect_mysql import auth_db
@@ -15,7 +15,10 @@ from connect_mysql import auth_db
 
 def get_date_range(timespan=1):
     '''Build a date range for queries
+
+    Default - count leads for previous day
     '''
+    
     now=f"{datetime.datetime.now():%Y-%m-%d}"
     start=f"{datetime.datetime.now()-datetime.timedelta(timespan):%Y-%m-%d}"
     date_range = "'" + start + "'" + " and " + "'" + now + "'"
@@ -25,6 +28,7 @@ def get_date_range(timespan=1):
 def query_referrals(dates, engine):
     '''Generate SQL query & return lead counts grouped by campaign
     '''
+
     sql = "SELECT campaign, COUNT(campaign) as leads " +\
     "from referrals " +\
     "WHERE created_at " +\
