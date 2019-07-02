@@ -29,7 +29,7 @@ def query_referrals(dates, engine):
     '''Generate SQL query & return lead counts grouped by campaign
     '''
 
-    sql = "SELECT campaign, COUNT(campaign) as leads " +\
+    sql = "SELECT campaign, COUNT(1) as leads " +\
     "from referrals " +\
     "WHERE created_at " +\
     "BETWEEN " + dates +\
@@ -43,7 +43,7 @@ def query_leads(dates, engine):
     '''Generate SQL query & process df to match referral format
     '''
 
-    sql= "SELECT COUNT(created_at) as leads " +\
+    sql= "SELECT COUNT(1) as leads " +\
     "from leads " +\
     "WHERE created_at " +\
     "BETWEEN " + dates
