@@ -1,5 +1,12 @@
 # mysql-tools
 
+** TO DO: **
+
++ functions to load each table 
++ securely refer to tables & campaign names
++ limit select to specific columns
++ avoid selecting duplicate rows for efficiency
+
 Contains tools and scripts to read data from mysql database 
 
 Required packages include:
